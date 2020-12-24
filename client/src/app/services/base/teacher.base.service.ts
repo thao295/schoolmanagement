@@ -58,6 +58,77 @@ export class TeacherBaseService {
 
     // CRUD METHODS
 
+    /**
+    * teacherService.create
+    *   @description CRUD ACTION create
+    *
+    */
+    create(item: Teacher): Observable<Teacher> {
+        return this.http
+            .post<Teacher>(this.contextUrl, item)
+            .pipe(map(data => data));
+    }
+
+    /**
+    * teacherService.delete
+    *   @description CRUD ACTION delete
+    *   @param ObjectId id Id
+    *
+    */
+    remove(id: string): Observable<void> {
+        return this.http
+            .delete<void>(this.contextUrl + '/' + id)
+            .pipe(map(data => data));
+    }
+
+    /**
+    * teacherService.findByName
+    *   @description CRUD ACTION findByName
+    *
+    */
+    findByName(id: string): Observable<Teacher[]> {
+        return this.http
+            .get<Teacher[]>(this.contextUrl + '/findByName/' + id)
+            .pipe(
+                map(response => response)
+            );
+    }
+
+    /**
+    * teacherService.get
+    *   @description CRUD ACTION get
+    *   @param ObjectId id Id resource
+    *
+    */
+    get(id: string): Observable<Teacher> {
+        return this.http
+            .get<Teacher>(this.contextUrl + '/' + id)
+            .pipe(map(data => data));
+    }
+
+    /**
+    * teacherService.list
+    *   @description CRUD ACTION list
+    *
+    */
+    list(): Observable<Teacher[]> {
+        return this.http
+            .get<Teacher[]>(this.contextUrl)
+            .pipe(map(data => data));
+    }
+
+    /**
+    * teacherService.update
+    *   @description CRUD ACTION update
+    *   @param ObjectId id Id
+    *
+    */
+    update(item: Teacher): Observable<Teacher> {
+        return this.http
+            .post<Teacher>(this.contextUrl + '/' + item._id, item)
+            .pipe(map(data => data));
+    }
+
 
     // Custom APIs
 

@@ -27,7 +27,7 @@ const generatedControllers = {
    */
   init: router => {
     const baseUrl = `${Properties.api}/user`;
-    router.post(baseUrl + "/:id/changePassword", authorize(["ADMIN"]), UserController.changePassword);
+    router.post(baseUrl + "/:id/changePassword", authorize(["ADMIN", "ADMIN"]), UserController.changePassword);
     router.post(baseUrl + "", authorize([]), UserController.create);
     router.delete(baseUrl + "/:id", authorize([]), UserController.delete);
     router.get(baseUrl + "/:id", authorize([]), UserController.get);
